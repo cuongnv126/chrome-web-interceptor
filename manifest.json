@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Web Interceptor",
+  "description": "Intercept logics of any websites",
+  "version": "1.0",
+  "action": {
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "128": "icon.png"
+  },
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ],
+      "js": [
+        "lib/interceptor/ZaloInterceptor.js",
+        "lib/content.js",
+        "lib/jquery.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ]
+}
